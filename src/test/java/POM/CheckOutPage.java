@@ -108,7 +108,7 @@ public class CheckOutPage {
     }
 
     public void selectCheck(){
-        WebElement check = driver.findElement(By.id("p_method_checkmo"));
+        WebElement check = driver.findElement(By.xpath("//input[@id='p_method_checkmo']"));
         check.click();
     }
 
@@ -126,5 +126,12 @@ public class CheckOutPage {
         WebElement heading = driver.findElement(By.xpath("//h1[normalize-space()='Your order has been received.']"));
         String expectedOrder = "YOUR ORDER HAS BEEN RECEIVED.";
         Assert.assertEquals(expectedOrder, heading.getText());
+    }
+
+    public void getOrderId(){
+        WebElement orderIdText = driver.findElement(By.xpath("//div[@class='main-container col1-layout']//p[1]"));
+        String text = orderIdText.getText();
+        String id = text.substring(17, text.length() - 1);
+        System.out.println("Order Id is: " + id);
     }
 }

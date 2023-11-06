@@ -15,7 +15,7 @@ public class testcase05 {
         WebDriver driver = driverFactory.getChromeDriver();
         String firstname = "Max";
         String lastname = "Maths";
-        String email = "sakura5128@gmail.com";
+        String email = "sakura5144@gmail.com";
         String password = "123456";
         String confirm = "123456";
 
