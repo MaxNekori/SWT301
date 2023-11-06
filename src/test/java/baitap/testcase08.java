@@ -37,18 +37,19 @@ public class testcase08 {
 
             WebElement reorder = driver.findElement(By.xpath("//tr[@class='first odd']//a[@class='link-reorder'][normalize-space()='Reorder']"));
             reorder.click();
+            Thread.sleep(2000);
 
             WebElement qtyInput = driver.findElement(By.xpath("//input[@title='Qty']"));
             qtyInput.clear();
             qtyInput.sendKeys("10");
             Thread.sleep(2000);
+            WebElement expectedTotal = driver.findElement(By.xpath("//strong//span[@class='price'][normalize-space()='$130.00']"));
             WebElement update = driver.findElement(By.xpath("//button[@title='Update']//span//span[contains(text(),'Update')]"));
             update.click();
             Thread.sleep(2000);
 
             WebElement grandTotal = driver.findElement(By.xpath("//strong//span[@class='price'][normalize-space()='$1,300.00']"));
-            String expectedTotal = "$1,300.00";
-            Assert.assertEquals(expectedTotal, grandTotal.getText());
+            Assert.assertNotEquals(grandTotal, expectedTotal);
             System.out.println("Grand Total is Changed");
 
             CartPage cart = new CartPage(driver);
